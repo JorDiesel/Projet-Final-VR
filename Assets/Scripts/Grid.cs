@@ -28,12 +28,6 @@ public class Grid
                     grid = new bool[18, 14];
                     break;
                 }
-            default:
-                {
-                    mines = 10;
-                    grid = new bool[10, 8];
-                    break;
-                }
         }
         Populate();
     }
