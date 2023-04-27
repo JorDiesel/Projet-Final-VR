@@ -18,7 +18,7 @@ public class Grid
                 {
                     mines = 3;
                     grid = new int[4,4];
-                    break
+                    break;
                 }
             case 1:
                 {
