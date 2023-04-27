@@ -29,7 +29,13 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 647fd1b9176e80640945f99b4e8fe4bd
+    name: AmbianceVol
+  - guid: 02d49a6bd1163a742af58e0c60a0772f
+    name: EffetsVol
+  - guid: e806a7f44dac16d4fb635d7244608b6c
+    name: MasterVol
   m_AudioMixerGroupViews:
   - guids:
     - 60838b5793f31c44aa0aa46c2df5f622
@@ -82,7 +88,9 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 7383ae827ab3ac844aca5a45b4dc2d0f
-  m_FloatValues: {}
+  m_FloatValues:
+    647fd1b9176e80640945f99b4e8fe4bd: -19.928473
+    02d49a6bd1163a742af58e0c60a0772f: -19.928473
   m_TransitionOverrides: {}
 --- !u!243 &2261202761740711533
 AudioMixerGroupController:
@@ -123,7 +131,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Musique
+  m_Name: Ambiance
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 3c4e64d39de376b4e894e1130c6443d4
   m_Children: []
