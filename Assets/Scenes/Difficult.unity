@@ -15444,6 +15444,64 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d2e223bb697d8be4bb8ade4cd8240c56, type: 3}
   m_PrefabInstance: {fileID: 1306866151}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2122253104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2122253106}
+  - component: {fileID: 2122253105}
+  m_Layer: 0
+  m_Name: Grille
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2122253105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122253104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ce37173be8dfb438a264808a7e1e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 3
+  mine: {fileID: 4445787834254895445, guid: 8665e84f2a86b074a9c22c6f19718910, type: 3}
+  safe: {fileID: 4445787834254895445, guid: 963e789ddd595a8489c94ddf6d72c141, type: 3}
+  numbers:
+  - {fileID: 2100000, guid: ed5754b603556a849a27aa647ed0c63f, type: 2}
+  - {fileID: 2100000, guid: d6b0dd06b9e0e34459d0adbfd1f58bf6, type: 2}
+  - {fileID: 2100000, guid: 63d823700489ac04f8983dedf4031405, type: 2}
+  - {fileID: 2100000, guid: 0baccffb6912c0241aecb51f4f4b5f04, type: 2}
+  - {fileID: 2100000, guid: 165de93fedd3234459da876fbd133ad0, type: 2}
+  - {fileID: 2100000, guid: 92862bc4a370b114ebd0fa20c7ad43d1, type: 2}
+  - {fileID: 2100000, guid: 887b27f9c0cf12745ad66239ed9bef80, type: 2}
+  - {fileID: 2100000, guid: 15863daac82ca684e9ddfa226c0edfa4, type: 2}
+  scale: 0.75
+  scaleY: 0.01
+--- !u!4 &2122253106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122253104}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &2124099170
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,31 +6,74 @@ public class Tile : MonoBehaviour
 {
     private bool shown;
     private bool flagged;
+    private bool mine;
     private Material baseMaterial;
     public Material hiddenmaterial;
     public Material flagMaterial;
     void Start()
     {
-        flagged = false;
         shown = false;
+        flagged = false;
         baseMaterial = this.GetComponent<Renderer>().material;
-        if (shown)
+        mine = baseMaterial.name == "Mine (Instance)";
+        this.GetComponent<Renderer>().material = hiddenmaterial;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "XR Origin")
         {
-            this.GetComponent<Renderer>().material = baseMaterial;
+            if (!flagged && !shown && mine)
+            {
+                ExplodedMine();
+            }
         }
-        else if (flagged)
+        else if (other.tag == "Flag")
         {
-            this.GetComponent<Renderer>().material = flagMaterial;
+            if (!shown)
+            {
+                GetFlagged();
+            }
         }
-        else
+        else if (other.tag == "Shovel")
         {
-            this.GetComponent<Renderer>().material = hiddenmaterial;
+            if (mine)
+            {
+                ExplodedMine();
+            }
+            else if (flagged)
+            {
+                return;
+            }
+            else
+            {
+                GetShown();
+            }
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetShown()
     {
-        
+        this.GetComponent<Renderer>().material = baseMaterial;
+    }
+
+    public void GetFlagged()
+    {
+        if (flagged)
+        {
+            this.GetComponent<Renderer>().material = hiddenmaterial;
+
+
+        }
+        else
+        {
+            this.GetComponent<Renderer>().material = flagMaterial;
+        }
+        flagged = !flagged;
+    }
+
+    public void ExplodedMine()
+    {
+        Debug.Log("Kaboom! You funcking died!");
     }
 }
