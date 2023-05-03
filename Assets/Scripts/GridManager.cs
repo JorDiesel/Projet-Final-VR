@@ -24,11 +24,6 @@ public class GridManager : MonoBehaviour
         RenderGrid();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     /// <summary>
     /// Place les cases de la grille dans la scène à partir du GameObject et assigne le material nécessaire à la case
     /// </summary>
@@ -59,5 +54,22 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
+    }
+    public void Add()
+    {
+        grid.mines ++;
+    }
+
+    public void Substract()
+    {
+        grid.mines--;
+        if (grid.mines == 0)
+        {
+            Win();
+        }
+    }
+    void Win()
+    {
+
     }
 }

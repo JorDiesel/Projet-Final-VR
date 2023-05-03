@@ -18,24 +18,24 @@ public class Grid
                 {
                     mines = 3;
                     grid = new int[4,4];
-                    break
+                    break;
                 }
             case 1:
                 {
                     mines = 10;
-                    grid = new int[10,8];
+                    grid = new int[8,10];
                     break;
                 }
             case 2:
                 {
                     mines = 20;
-                    grid = new int[12, 10];
+                    grid = new int[10, 12];
                     break;
                 }
             case 3:
                 {
                     mines = 50;
-                    grid = new int[18, 14];
+                    grid = new int[14, 18];
                     break;
                 }
         }
