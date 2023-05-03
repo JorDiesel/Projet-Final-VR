@@ -17,7 +17,7 @@ public class Tile : MonoBehaviour
     private AudioSource bombAudio;
 
     public UnityEvent flagEvent;
-    public UnityEvent unFlagEvent;
+    public UnityEvent unflagEvent;
 
     void Start()
     {
@@ -72,7 +72,7 @@ public class Tile : MonoBehaviour
         if (flagged)
         {
             this.GetComponent<Renderer>().material = hiddenmaterial;
-            unFlagEvent.Invoke();
+            unflagEvent.Invoke();
         }
         else
         {
@@ -92,6 +92,6 @@ public class Tile : MonoBehaviour
     {
         bombAudio.Play();
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

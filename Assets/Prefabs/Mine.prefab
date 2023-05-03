@@ -113,8 +113,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hiddenmaterial: {fileID: 2100000, guid: f129b405a6669aa40823bb410e2772ba, type: 2}
   flagMaterial: {fileID: 2100000, guid: d2b1d15678cc7dc4191228da79b23ce2, type: 2}
-  playerAudio: {fileID: 0}
-  bombExplosion: {fileID: 8300000, guid: 784f81eb95783a74cb7625f345b003a3, type: 3}
+  flagEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 6c6e846b52cef7546b5f2b0fd427b344, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  unFlagEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &-4162220343588091950
 AudioSource:
   m_ObjectHideFlags: 0

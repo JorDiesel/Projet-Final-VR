@@ -46,9 +46,4 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(6);
         canvas.SetActive(false);
     }
-
-    public void test()
-    {
-
-    }
 }
