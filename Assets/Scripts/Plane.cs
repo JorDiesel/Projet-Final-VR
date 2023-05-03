@@ -7,18 +7,20 @@ public class Plane : MonoBehaviour
     public GameObject prototypeBomb;
     public float speed = 8.0f;
 
-    private void Update()
+    private void Start()
     {
-        if (Mathf.Approximately(this.transform.position.z, -3.0f))
-        {
-            print("I'm here");
-            Instantiate(prototypeBomb, new Vector3(0, 10, 0), Quaternion.identity);
-        }
+        StartCoroutine("DeletePlane");
     }
 
 
     private void FixedUpdate()
     {
         transform.Translate(-(speed * Time.deltaTime), 0, 0);
+    }
+
+    IEnumerable DeletePlane()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
     }
 }

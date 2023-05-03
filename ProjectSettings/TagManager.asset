@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flag
   - Shovel
+  - Ocean
   layers:
   - Default
   - TransparentFX

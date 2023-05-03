@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Tile : MonoBehaviour
 {
@@ -10,6 +13,12 @@ public class Tile : MonoBehaviour
     private Material baseMaterial;
     public Material hiddenmaterial;
     public Material flagMaterial;
+    //public GameObject mainCamera;
+    private AudioSource bombAudio;
+
+    public UnityEvent flagEvent;
+    public UnityEvent unFlagEvent;
+
     void Start()
     {
         shown = false;
@@ -17,6 +26,7 @@ public class Tile : MonoBehaviour
         baseMaterial = this.GetComponent<Renderer>().material;
         mine = baseMaterial.name == "Mine (Instance)";
         this.GetComponent<Renderer>().material = hiddenmaterial;
+        bombAudio = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -62,18 +72,26 @@ public class Tile : MonoBehaviour
         if (flagged)
         {
             this.GetComponent<Renderer>().material = hiddenmaterial;
-
-
+            unFlagEvent.Invoke();
         }
         else
         {
             this.GetComponent<Renderer>().material = flagMaterial;
+            flagEvent.Invoke();
         }
         flagged = !flagged;
     }
 
     public void ExplodedMine()
     {
-        Debug.Log("Kaboom! You funcking died!");
+        //mainCamera.SetActive(false);
+        StartCoroutine("Died");
+    }
+
+    IEnumerator Died()
+    {
+        bombAudio.Play();
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(0);
     }
 }
