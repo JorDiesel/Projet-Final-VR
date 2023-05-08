@@ -47,13 +47,13 @@ public class Tile : MonoBehaviour
         }
         else if (other.tag == "Shovel")
         {
-            if (mine)
-            {
-                ExplodedMine();
-            }
-            else if (flagged)
+            if (flagged)
             {
                 return;
+            }
+            else if (mine)
+            {
+                ExplodedMine();
             }
             else
             {
@@ -65,6 +65,7 @@ public class Tile : MonoBehaviour
     public void GetShown()
     {
         this.GetComponent<Renderer>().material = baseMaterial;
+        shown = true;
     }
 
     public void GetFlagged()
