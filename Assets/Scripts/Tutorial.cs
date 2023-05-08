@@ -9,7 +9,6 @@ public class Tutorial : MonoBehaviour
     public TextMeshProUGUI textMesh;
     public InputActionReference AActionReference;
 
-    private bool playerIsEnter = false;
     public int swapState = 0;
 
     private void Start()

@@ -14,6 +14,7 @@ public class GridManager : MonoBehaviour
     private float x;
     public float scale;
     public float scaleY;
+    public AudioSource winningSound;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +78,7 @@ public class GridManager : MonoBehaviour
     }
     void Win()
     {
+        winningSound.Play();
         winningCanvas.SetActive(true);
     }
 }
