@@ -4,13 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
-  - ZoneDeJeu
-=======
   - Flag
   - Shovel
   - Ocean
->>>>>>> dev
   layers:
   - Default
   - TransparentFX
