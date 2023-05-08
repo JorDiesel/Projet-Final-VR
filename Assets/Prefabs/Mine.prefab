@@ -97,7 +97,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 40, z: 1}
+  m_Size: {x: 0.75, y: 40, z: 0.75}
   m_Center: {x: 0, y: 20, z: 0}
 --- !u!114 &8433346030674821365
 MonoBehaviour:
@@ -128,7 +128,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  unFlagEvent:
+  unflagEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!82 &-4162220343588091950

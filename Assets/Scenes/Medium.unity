@@ -6227,6 +6227,10 @@ CharacterController:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1662722848597322499, guid: a3d6489a031a7c641bdfb45ee946f30f, type: 3}
+      propertyPath: m_LocomotionProvider
+      value: 
+      objectReference: {fileID: 15408144}
     - target: {fileID: 1662722848597322501, guid: a3d6489a031a7c641bdfb45ee946f30f, type: 3}
       propertyPath: canvas
       value: 
