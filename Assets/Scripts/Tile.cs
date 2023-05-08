@@ -1,36 +1,97 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Tile : MonoBehaviour
 {
     private bool shown;
     private bool flagged;
+    private bool mine;
     private Material baseMaterial;
     public Material hiddenmaterial;
     public Material flagMaterial;
+    //public GameObject mainCamera;
+    private AudioSource bombAudio;
+
+    public UnityEvent flagEvent;
+    public UnityEvent unflagEvent;
+
     void Start()
     {
-        flagged = false;
         shown = false;
+        flagged = false;
         baseMaterial = this.GetComponent<Renderer>().material;
-        if (shown)
+        mine = baseMaterial.name == "Mine (Instance)";
+        this.GetComponent<Renderer>().material = hiddenmaterial;
+        bombAudio = GetComponent<AudioSource>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "XR Origin")
         {
-            this.GetComponent<Renderer>().material = baseMaterial;
+            if (!flagged && !shown && mine)
+            {
+                ExplodedMine();
+            }
         }
-        else if (flagged)
+        else if (other.tag == "Flag")
         {
-            this.GetComponent<Renderer>().material = flagMaterial;
+            if (!shown)
+            {
+                GetFlagged();
+            }
         }
-        else
+        else if (other.tag == "Shovel")
         {
-            this.GetComponent<Renderer>().material = hiddenmaterial;
+            if (mine)
+            {
+                ExplodedMine();
+            }
+            else if (flagged)
+            {
+                return;
+            }
+            else
+            {
+                GetShown();
+            }
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GetShown()
     {
-        
+        this.GetComponent<Renderer>().material = baseMaterial;
+    }
+
+    public void GetFlagged()
+    {
+        if (flagged)
+        {
+            this.GetComponent<Renderer>().material = hiddenmaterial;
+            unflagEvent.Invoke();
+        }
+        else
+        {
+            this.GetComponent<Renderer>().material = flagMaterial;
+            flagEvent.Invoke();
+        }
+        flagged = !flagged;
+    }
+
+    public void ExplodedMine()
+    {
+        //mainCamera.SetActive(false);
+        StartCoroutine("Died");
+    }
+
+    IEnumerator Died()
+    {
+        bombAudio.Play();
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

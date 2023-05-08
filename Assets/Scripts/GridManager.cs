@@ -6,6 +6,7 @@ public class GridManager : MonoBehaviour
 {
     public int difficulty;
     public Grid grid;
+    public GameObject winningCanvas;
     public GameObject mine;
     public GameObject safe;
     public Material[] numbers;
@@ -24,11 +25,6 @@ public class GridManager : MonoBehaviour
         RenderGrid();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     /// <summary>
     /// Place les cases de la grille dans la scène à partir du GameObject et assigne le material nécessaire à la case
     /// </summary>
@@ -41,12 +37,16 @@ public class GridManager : MonoBehaviour
                 if (grid.grid[i, j] >= 9)
                 {
                     GameObject placedMine = Instantiate(mine, transform);
+                    placedMine.GetComponent<Tile>().flagEvent.AddListener(Substract);
+                    placedMine.GetComponent<Tile>().unflagEvent.AddListener(Add);
                     placedMine.transform.localPosition = new Vector3(i * scale - x, 0f, j * scale - z);
                     placedMine.transform.localScale = new Vector3(scale, scaleY, scale);
                 }
                 else if (grid.grid[i, j] >= 1)
                 {
                     GameObject nearMine = Instantiate(safe, transform);
+                    nearMine.GetComponent<Tile>().flagEvent.AddListener(Add);
+                    nearMine.GetComponent<Tile>().unflagEvent.AddListener(Substract);
                     nearMine.GetComponent<Renderer>().material = numbers[grid.grid[i, j] - 1];
                     nearMine.transform.localPosition = new Vector3(i * scale - x, 0f, j * scale - z);
                     nearMine.transform.localScale = new Vector3(scale, scaleY, scale);
@@ -54,10 +54,29 @@ public class GridManager : MonoBehaviour
                 else
                 {
                     GameObject safeSquare = Instantiate(safe, transform);
+                    safeSquare.GetComponent<Tile>().flagEvent.AddListener(Add);
+                    safeSquare.GetComponent<Tile>().unflagEvent.AddListener(Substract);
                     safeSquare.transform.localPosition = new Vector3(i * scale - x, 0f, j * scale - z);
                     safeSquare.transform.localScale = new Vector3(scale, scaleY, scale);
                 }
             }
         }
+    }
+    public void Add()
+    {
+        grid.mines ++;
+    }
+
+    public void Substract()
+    {
+        grid.mines--;
+        if (grid.mines == 0)
+        {
+            Win();
+        }
+    }
+    void Win()
+    {
+        winningCanvas.SetActive(true);
     }
 }

@@ -41,6 +41,7 @@ AudioMixerController:
     - 60838b5793f31c44aa0aa46c2df5f622
     - b623a04a68f86a248893d53fc193f4fa
     - 3c4e64d39de376b4e894e1130c6443d4
+    - 1af398ae1979e71468ec06b063e2af5a
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -56,6 +57,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 2261202761740711533}
   - {fileID: 8699728791473809040}
+  - {fileID: 9077434691776860037}
   m_Volume: e806a7f44dac16d4fb635d7244608b6c
   m_Pitch: 0544ceefe179cff4c9bf87148d3e542b
   m_Send: 00000000000000000000000000000000
@@ -91,7 +93,22 @@ AudioMixerSnapshotController:
   m_FloatValues:
     647fd1b9176e80640945f99b4e8fe4bd: -19.928473
     02d49a6bd1163a742af58e0c60a0772f: -19.928473
+    fc6be0fea798f8d4c8a7872ffd887efd: 20
   m_TransitionOverrides: {}
+--- !u!244 &1360155569512256519
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 281b7922de895794a8b442fc6219944f
+  m_EffectName: Attenuation
+  m_MixLevel: 67bcb79d36f9c0843b147fb57008caba
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &2261202761740711533
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -140,6 +157,25 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 8512271671161776984}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!243 &9077434691776860037
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Reward
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 1af398ae1979e71468ec06b063e2af5a
+  m_Children: []
+  m_Volume: fc6be0fea798f8d4c8a7872ffd887efd
+  m_Pitch: dbaecc123cfc4f04bbeec63bf18aceb9
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 1360155569512256519}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
