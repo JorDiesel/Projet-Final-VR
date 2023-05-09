@@ -10,6 +10,7 @@ public class Tile : MonoBehaviour
     private bool shown;
     private bool flagged;
     private bool mine;
+    public bool flageable;
     private Material baseMaterial;
     public Material hiddenmaterial;
     public Material flagMaterial;
@@ -23,6 +24,7 @@ public class Tile : MonoBehaviour
     {
         shown = false;
         flagged = false;
+        flageable = true;
         baseMaterial = this.GetComponent<Renderer>().material;
         mine = baseMaterial.name == "Mine (Instance)";
         this.GetComponent<Renderer>().material = hiddenmaterial;
@@ -33,7 +35,7 @@ public class Tile : MonoBehaviour
     {
         if (other.name == "XR Origin")
         {
-            if (!flagged && !shown && mine)
+            if (!flagged && !shown && mine && flageable)
             {
                 ExplodedMine();
             }
@@ -47,13 +49,13 @@ public class Tile : MonoBehaviour
         }
         else if (other.tag == "Shovel")
         {
-            if (mine)
-            {
-                ExplodedMine();
-            }
-            else if (flagged)
+            if (flagged)
             {
                 return;
+            }
+            else if (mine && flageable)
+            {
+                ExplodedMine();
             }
             else
             {
@@ -65,33 +67,46 @@ public class Tile : MonoBehaviour
     public void GetShown()
     {
         this.GetComponent<Renderer>().material = baseMaterial;
+        shown = true;
     }
 
     public void GetFlagged()
     {
-        if (flagged)
+        if(flageable)
         {
-            this.GetComponent<Renderer>().material = hiddenmaterial;
-            unflagEvent.Invoke();
+            if (flagged)
+            {
+                this.GetComponent<Renderer>().material = hiddenmaterial;
+                unflagEvent.Invoke();
+            }
+            else
+            {
+                this.GetComponent<Renderer>().material = flagMaterial;
+                flagEvent.Invoke();
+            }
+            StartCoroutine("WaitFlagged");
+            flagged = !flagged;
         }
-        else
-        {
-            this.GetComponent<Renderer>().material = flagMaterial;
-            flagEvent.Invoke();
-        }
-        flagged = !flagged;
     }
 
     public void ExplodedMine()
     {
-        //mainCamera.SetActive(false);
+        flageable = false;
+        GetShown();
         StartCoroutine("Died");
     }
 
     IEnumerator Died()
     {
         bombAudio.Play();
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+    }
+
+    IEnumerator WaitFlagged()
+    {
+        flageable = false;
+        yield return new WaitForSeconds(1);
+        flageable = true;
     }
 }
