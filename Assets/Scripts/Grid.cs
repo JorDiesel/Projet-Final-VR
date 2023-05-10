@@ -17,7 +17,7 @@ public class Grid
             case 0:
                 {
                     mines = 3;
-                    grid = new int[4,4];
+                    grid = new int[6,6];
                     break;
                 }
             case 1:
@@ -48,14 +48,15 @@ public class Grid
     {
         Fill();
         //Tant qu'il reste des mines à assigner
-        while(mines > 0)
+        int mine = mines;
+        while(mine > 0)
         {
             int x = Random.Range(0, grid.GetLength(0)); //Choisi un x aléatoire
             int y = Random.Range(0, grid.GetLength(1)); //Choisi un y aléatoire
             if (grid[x, y] == 0) //S'il n'y a pas de mine sur cette case
             {
                 grid[x, y] = 9;
-                mines--;
+                mine--;
             }
         }
         AssignValue();
